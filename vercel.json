@@ -8,6 +8,11 @@
   ],
   "routes": [
     {
+      "src": "/shopify/webhooks/orders/paid",
+      "dest": "server.js",
+      "methods": ["POST"]
+    },
+    {
       "src": "/(.*)",
       "dest": "server.js"
     }
