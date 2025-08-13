@@ -2,19 +2,26 @@
   "version": 2,
   "builds": [
     {
-      "src": "server.js",
+      "src": "api/*.js",
       "use": "@vercel/node"
     }
   ],
   "routes": [
     {
-      "src": "/shopify/webhooks/orders/paid",
-      "dest": "server.js",
+      "src": "/api/webhook",
+      "dest": "/api/webhook.js",
       "methods": ["POST"]
     },
     {
-      "src": "/(.*)",
-      "dest": "server.js"
+      "src": "/api/sync-products",
+      "dest": "/api/sync-products.js",
+      "methods": ["GET"]
+    }
+  ],
+  "crons": [
+    {
+      "path": "/api/sync-products",
+      "schedule": "0 0 * * *"
     }
   ]
 }
